@@ -1,4 +1,4 @@
-# NutriVision AI
+# NutriCalix
 
 A web-based tool that estimates nutrition and calories from photos of food.
 
@@ -23,7 +23,7 @@ Right now, this repo contains the frontend interface with simulated AI results, 
 ## Project Structure
 
 ```text
-nutrivision/
+nutricalix/
 ├── frontend/
 │   ├── index.html        # Main landing page
 │   ├── scan.html         # Scanner and dashboard interface

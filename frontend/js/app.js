@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * NutriVision AI - Core Frontend Logic
+ * NutriCalix - Core Frontend Logic
  * AI Vision Frontend Prototype - Clean Vanilla JavaScript
  * ============================================================================
  * 
@@ -121,7 +121,7 @@ function generateFoodSvg(accentColor, label) {
     <circle cx="300" cy="200" r="130" fill="#121829" stroke="${accentColor}" stroke-width="3" stroke-dasharray="8 4"/>
     <circle cx="300" cy="200" r="105" fill="#1b253b" />
     <text x="300" y="195" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#f8fafc" text-anchor="middle">${label}</text>
-    <text x="300" y="230" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">NutriVision AI • High-Resolution Test Specimen</text>
+    <text x="300" y="230" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">NutriCalix • High-Resolution Test Specimen</text>
   </svg>`;
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
