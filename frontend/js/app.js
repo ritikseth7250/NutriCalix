@@ -1,19 +1,3 @@
-/**
- * ============================================================================
- * NutriCalix - Core Frontend Logic
- * AI Vision Frontend Prototype - Clean Vanilla JavaScript
- * ============================================================================
- * 
- * Modular architecture ready for FastAPI integration:
- * - Mock Vision Inference Engine
- * - Drag-and-drop Image Upload & Preview
- * - Interactive Simulated AI Pipeline
- * - Real-time Nutritional Dashboard & Chart.js Visualizer
- */
-
-// ---------------------------------------------------------------------------
-// 1. Mock Food Knowledge Base
-// ---------------------------------------------------------------------------
 const FOOD_DATABASE = {
   'chicken-rice': {
     name: 'Grilled Chicken Rice',
@@ -31,7 +15,6 @@ const FOOD_DATABASE = {
       'Add steamed broccoli or mixed salad to increase micronutrient density.',
       'Reduce cooking oil or skin on chicken to lower saturated fat content.'
     ],
-    // Clean SVG graphic representation for sample preview
     svgThumb: generateFoodSvg('#f59e0b', '🍗 Chicken Rice')
   },
   'avocado-toast': {
@@ -108,7 +91,6 @@ const FOOD_DATABASE = {
   }
 };
 
-// Generates an inline Data URL SVG for dishes when external photos are not uploaded
 function generateFoodSvg(accentColor, label) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
     <defs>
@@ -121,19 +103,16 @@ function generateFoodSvg(accentColor, label) {
     <circle cx="300" cy="200" r="130" fill="#121829" stroke="${accentColor}" stroke-width="3" stroke-dasharray="8 4"/>
     <circle cx="300" cy="200" r="105" fill="#1b253b" />
     <text x="300" y="195" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#f8fafc" text-anchor="middle">${label}</text>
-    <text x="300" y="230" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">NutriCalix • High-Resolution Test Specimen</text>
+    <text x="300" y="230" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">NutriCalix • High-Resolution Visual Scan</text>
   </svg>`;
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
-// ---------------------------------------------------------------------------
-// 2. Global State & Targets
-// ---------------------------------------------------------------------------
 const DAILY_TARGETS = {
   calories: 2200,
-  protein: 120, // grams
-  carbs: 250,   // grams
-  fat: 70       // grams
+  protein: 120,
+  carbs: 250,
+  fat: 70
 };
 
 const state = {
@@ -162,9 +141,6 @@ const state = {
 
 let nutritionChart = null;
 
-// ---------------------------------------------------------------------------
-// 3. Initialization
-// ---------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   initDropzone();
   initSampleChips();
@@ -172,27 +148,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initLogButton();
   initDashboard();
 
-  // Pre-load default specimen so user can test immediately
   loadSampleFood('chicken-rice');
 });
 
-// ---------------------------------------------------------------------------
-// 4. File Upload & Drag-and-Drop Handling
-// ---------------------------------------------------------------------------
 function initDropzone() {
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('fileInput');
   if (!dropzone || !fileInput) return;
 
-  // Open file browser on click
   dropzone.addEventListener('click', (e) => {
-    // Prevent double triggering if clicked directly on input
     if (e.target !== fileInput) {
       fileInput.click();
     }
   });
 
-  // Handle native file selection
   fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -200,7 +169,6 @@ function initDropzone() {
     }
   });
 
-  // Drag and drop events
   ['dragenter', 'dragover'].forEach(eventName => {
     dropzone.addEventListener(eventName, (e) => {
       e.preventDefault();
@@ -235,10 +203,9 @@ function processSelectedFile(file) {
   reader.onload = (e) => {
     const dataUrl = e.target.result;
     state.currentImageData = dataUrl;
-    state.currentFoodKey = 'custom'; // custom uploaded item
+    state.currentFoodKey = 'custom';
 
     displayPreviewImage(dataUrl, file.name);
-    // De-activate preset sample chips
     document.querySelectorAll('.sample-chip').forEach(c => c.classList.remove('active'));
     showToast(`Loaded "${file.name}" ready for analysis.`);
   };
@@ -257,9 +224,6 @@ function displayPreviewImage(src, labelText = 'Ready for Vision AI scan') {
   }
 }
 
-// ---------------------------------------------------------------------------
-// 5. Sample Preset Chips
-// ---------------------------------------------------------------------------
 function initSampleChips() {
   const chips = document.querySelectorAll('.sample-chip');
   chips.forEach(chip => {
@@ -281,12 +245,9 @@ function loadSampleFood(foodKey) {
   state.currentFoodKey = foodKey;
   state.currentImageData = food.svgThumb;
 
-  displayPreviewImage(food.svgThumb, `Preset Specimen: ${food.name}`);
+  displayPreviewImage(food.svgThumb, `Selected Dish: ${food.name}`);
 }
 
-// ---------------------------------------------------------------------------
-// 6. Food Analysis Simulation (Ready for FastAPI endpoint)
-// ---------------------------------------------------------------------------
 function initAnalyzeButton() {
   const analyzeBtn = document.getElementById('analyzeBtn');
   if (!analyzeBtn) return;
@@ -308,7 +269,6 @@ function runVisionAnalysis() {
   const resultCard = document.getElementById('resultCard');
   const resultEmptyState = document.getElementById('resultEmptyState');
 
-  // Disable button & trigger laser scanning animation
   analyzeBtn.disabled = true;
   analyzeBtn.innerHTML = `
     <span class="spinner"></span>
@@ -317,7 +277,6 @@ function runVisionAnalysis() {
   if (previewWrapper) previewWrapper.classList.add('scanning');
   if (aiStatusBox) aiStatusBox.classList.add('visible');
 
-  // Progressive simulation steps (emulates deep learning inference lifecycle)
   const steps = [
     { delay: 100, text: 'Preprocessing tensor & normalizing color channels...' },
     { delay: 600, text: 'Executing YOLOv8 segmentation on food regions...' },
@@ -330,9 +289,7 @@ function runVisionAnalysis() {
     }, step.delay);
   });
 
-  // Final delivery of results after simulated latency (1.4 seconds)
   setTimeout(() => {
-    // Determine analysis data: either specific preset or synthetic custom item
     let resultData;
     if (state.currentFoodKey === 'custom') {
       resultData = {
@@ -358,10 +315,8 @@ function runVisionAnalysis() {
 
     state.currentAnalysis = resultData;
 
-    // Render results into UI
     renderAnalysisResult(resultData);
 
-    // Reset button & scanner visuals
     analyzeBtn.disabled = false;
     analyzeBtn.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -379,36 +334,10 @@ function runVisionAnalysis() {
     }
 
     showToast(`Food recognized: ${resultData.name}`);
-
-    /**
-     * =============================================================
-     * FUTURE AI MODEL API INTEGRATION POINT (Gemini / OpenAI / Custom API):
-     * =============================================================
-     * Replace this simulated timeout with your real AI model API call:
-     *
-     * Option A: Backend / Custom AI Model API (FastAPI / Node.js)
-     * const formData = new FormData();
-     * formData.append("image", fileObject);
-     * const response = await fetch("http://localhost:8000/api/analyze-food", {
-     *   method: "POST",
-     *   body: formData
-     * });
-     * const data = await response.json();
-     * renderAnalysisResult(data);
-     *
-     * Option B: Direct Multimodal Vision API (e.g. Gemini / GPT-4o)
-     * const response = await fetch("https://your-api-endpoint/vision", {
-     *   method: "POST",
-     *   headers: { "Content-Type": "application/json", "Authorization": "Bearer YOUR_API_KEY" },
-     *   body: JSON.stringify({ image: state.currentImageData, prompt: "Analyze food macros and return JSON" })
-     * });
-     * =============================================================
-     */
   }, 1400);
 }
 
 function renderAnalysisResult(food) {
-  // Title & Confidence
   const foodTitle = document.getElementById('resFoodTitle');
   const foodConf = document.getElementById('resFoodConfidence');
   const resThumb = document.getElementById('resFoodThumb');
@@ -417,14 +346,12 @@ function renderAnalysisResult(food) {
   if (foodConf) foodConf.textContent = `${food.confidence} Confidence`;
   if (resThumb && state.currentImageData) resThumb.src = state.currentImageData;
 
-  // Macros
   setText('resCal', food.calories);
   setText('resPro', food.protein);
   setText('resCarb', food.carbs);
   setText('resFat', food.fat);
   setText('resFib', food.fiber);
 
-  // Health Assessment Alert Box
   const assessBox = document.getElementById('resAssessmentBox');
   const assessIcon = document.getElementById('resAssessmentIcon');
   const assessText = document.getElementById('resAssessmentText');
@@ -435,7 +362,6 @@ function renderAnalysisResult(food) {
     assessText.textContent = food.assessment;
   }
 
-  // Suggestions List
   const suggestionsList = document.getElementById('resSuggestionsList');
   if (suggestionsList) {
     suggestionsList.innerHTML = food.suggestions.map(s => `
@@ -447,9 +373,6 @@ function renderAnalysisResult(food) {
   }
 }
 
-// ---------------------------------------------------------------------------
-// 7. Adding Scanned Meal to Today's Dashboard Log
-// ---------------------------------------------------------------------------
 function initLogButton() {
   const logBtn = document.getElementById('logMealBtn');
   if (!logBtn) return;
@@ -472,14 +395,11 @@ function initLogButton() {
       fat: state.currentAnalysis.fat
     };
 
-    // Prepend to top of daily log
     state.dailyLog.unshift(newLogEntry);
 
-    // Refresh Dashboard calculations and Chart
     updateDashboardUI();
     showToast(`Logged "${newLogEntry.name}" to today's intake!`);
 
-    // Smooth scroll down to dashboard
     const dashSection = document.getElementById('dashboard');
     if (dashSection) {
       dashSection.scrollIntoView({ behavior: 'smooth' });
@@ -487,15 +407,11 @@ function initLogButton() {
   });
 }
 
-// ---------------------------------------------------------------------------
-// 8. Daily Dashboard & Chart.js Implementation
-// ---------------------------------------------------------------------------
 function initDashboard() {
   updateDashboardUI();
 }
 
 function updateDashboardUI() {
-  // Aggregate daily totals
   const totals = state.dailyLog.reduce((acc, item) => {
     acc.calories += item.calories;
     acc.protein += item.protein;
@@ -504,22 +420,18 @@ function updateDashboardUI() {
     return acc;
   }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
 
-  // Update Numbers
   setText('dashCal', totals.calories.toLocaleString());
   setText('dashPro', `${totals.protein}g`);
   setText('dashCarb', `${totals.carbs}g`);
   setText('dashFat', `${totals.fat}g`);
 
-  // Update Progress Bars
   setProgressBar('dashCalProgress', (totals.calories / DAILY_TARGETS.calories) * 100);
   setProgressBar('dashProProgress', (totals.protein / DAILY_TARGETS.protein) * 100);
   setProgressBar('dashCarbProgress', (totals.carbs / DAILY_TARGETS.carbs) * 100);
   setProgressBar('dashFatProgress', (totals.fat / DAILY_TARGETS.fat) * 100);
 
-  // Render Log Table
   renderMealsTable();
 
-  // Render / Update Chart.js
   renderNutritionChart(totals);
 }
 
@@ -547,7 +459,6 @@ function renderMealsTable() {
   `).join('');
 }
 
-// Global removal function accessible by inline onclick
 window.removeMeal = function(index) {
   if (state.dailyLog[index]) {
     const removed = state.dailyLog.splice(index, 1);
@@ -560,13 +471,11 @@ function renderNutritionChart(totals) {
   const ctx = document.getElementById('nutritionChart');
   if (!ctx) return;
 
-  // Total macro weight in grams
   const macroTotal = (totals.protein + totals.carbs + totals.fat) || 1;
   const proPct = Math.round((totals.protein / macroTotal) * 100);
   const carbPct = Math.round((totals.carbs / macroTotal) * 100);
   const fatPct = Math.round((totals.fat / macroTotal) * 100);
 
-  // Check if Chart.js is loaded
   if (typeof Chart === 'undefined') {
     ctx.parentElement.innerHTML = `<div style="color:#94a3b8; text-align:center; padding:2rem;">Chart.js is loading or working in offline mode.<br>Protein: ${totals.protein}g | Carbs: ${totals.carbs}g | Fat: ${totals.fat}g</div>`;
     return;
@@ -581,9 +490,9 @@ function renderNutritionChart(totals) {
     datasets: [{
       data: [totals.protein, totals.carbs, totals.fat],
       backgroundColor: [
-        '#06b6d4', // Cyan (Protein)
-        '#f59e0b', // Amber (Carbs)
-        '#f43f5e'  // Rose (Fat)
+        '#06b6d4',
+        '#f59e0b',
+        '#f43f5e'
       ],
       borderColor: '#090d16',
       borderWidth: 3,
@@ -634,9 +543,6 @@ function renderNutritionChart(totals) {
   }
 }
 
-// ---------------------------------------------------------------------------
-// 9. Utility Helpers
-// ---------------------------------------------------------------------------
 function setText(id, text) {
   const el = document.getElementById(id);
   if (el) el.textContent = text;

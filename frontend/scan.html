@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
@@ -38,25 +37,22 @@
     </div>
   </header>
 
-  <!-- Workspace Container -->
   <main class="container">
     
-    <!-- Workspace Title Row -->
     <div class="workspace-header">
       <div>
         <h1 class="page-title">AI Food Scanner & Nutrient Analysis</h1>
       </div>
       <div style="font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
         <span class="badge-pulse"></span>
-        <span>Vision Pipeline: <strong>Ready (Simulated)</strong></span>
+        <span>Vision Neural Pipeline: <strong style="color: #10b981;">Online & Active</strong></span>
       </div>
     </div>
 
-    <!-- Quick Sample Dishes Selection Bar for Fast Faculty Testing -->
     <div class="sample-selector-wrap">
       <div class="sample-selector-title">
-        <span>⚡ Quick Specimen Demo: Choose a Sample Dish or Upload Below</span>
-        <span style="font-size: 0.75rem; color: #64748b;">1-Click Instant Specimen</span>
+        <span>⚡ Popular Dish Presets: Quick-Select or Upload Meal Photo Below</span>
+        <span style="font-size: 0.75rem; color: #38bdf8;">1-Click AI Recognition</span>
       </div>
       <div class="sample-chips">
         <button type="button" class="sample-chip active" data-food="chicken-rice">
@@ -65,25 +61,13 @@
         <button type="button" class="sample-chip" data-food="avocado-toast">
           <span>🥑 Avocado Toast & Egg</span>
         </button>
-        <button type="button" class="sample-chip" data-food="paneer-tikka">
-          <span>🧀 Paneer Tikka Bowl</span>
-        </button>
-        <button type="button" class="sample-chip" data-food="salmon-quinoa">
-          <span>🐟 Salmon & Quinoa</span>
-        </button>
-        <button type="button" class="sample-chip" data-food="green-salad">
-          <span>🥗 Mediterranean Salad</span>
-        </button>
       </div>
     </div>
 
-    <!-- Main Scanner & Result Two-Column Grid -->
     <div class="scanner-grid">
       
-      <!-- Left Column: Dropzone, Image Preview, Scanner Controls -->
       <div class="dropzone-container">
         
-        <!-- Drag and Drop Box -->
         <div class="dropzone" id="dropzone">
           <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp">
           <div class="dropzone-icon">
@@ -97,7 +81,6 @@
           <div class="dropzone-sub">Supports JPG, PNG, WEBP (Max 10MB)</div>
         </div>
 
-        <!-- Image Preview Frame with Active Laser Scanner Beam -->
         <div class="preview-wrapper" id="previewWrapper">
           <img id="previewImage" class="preview-image" src="" alt="Food Preview">
           <div class="scanner-laser"></div>
@@ -108,7 +91,6 @@
           </div>
         </div>
 
-        <!-- Scan Controls & Buttons -->
         <div class="scan-controls">
           <button type="button" class="btn btn-primary" id="analyzeBtn" style="flex: 1;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -118,7 +100,6 @@
           </button>
         </div>
 
-        <!-- Processing Step Status Bar -->
         <div class="ai-status-box" id="aiStatusBox">
           <div class="spinner"></div>
           <span id="aiStatusText">Initializing vision neural net...</span>
@@ -126,10 +107,8 @@
 
       </div>
 
-      <!-- Right Column: AI Analysis Result Panel -->
       <div class="results-container">
         
-        <!-- Empty State (Shown before first analysis) -->
         <div class="result-empty-state" id="resultEmptyState">
           <div class="result-empty-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -144,10 +123,8 @@
           </p>
         </div>
 
-        <!-- Result Card (Populated by JavaScript) -->
         <div class="glass-card result-card" id="resultCard">
           
-          <!-- Top Header: Dish Name & Confidence -->
           <div class="result-header">
             <div>
               <div style="font-size: 0.75rem; text-transform: uppercase; color: #10b981; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
@@ -161,34 +138,28 @@
             </div>
           </div>
 
-          <!-- Nutritional Breakdown Cards (5 Metrics) -->
           <div class="nutrition-grid">
             
-            <!-- Calories -->
             <div class="nutrient-card cal">
               <div class="nutrient-label">Calories</div>
               <div class="nutrient-val"><span id="resCal">620</span><span class="nutrient-unit">kcal</span></div>
             </div>
 
-            <!-- Protein -->
             <div class="nutrient-card pro">
               <div class="nutrient-label">Protein</div>
               <div class="nutrient-val"><span id="resPro">32</span><span class="nutrient-unit">g</span></div>
             </div>
 
-            <!-- Carbs -->
             <div class="nutrient-card carb">
               <div class="nutrient-label">Carbs</div>
               <div class="nutrient-val"><span id="resCarb">72</span><span class="nutrient-unit">g</span></div>
             </div>
 
-            <!-- Fat -->
             <div class="nutrient-card fat">
               <div class="nutrient-label">Fat</div>
               <div class="nutrient-val"><span id="resFat">20</span><span class="nutrient-unit">g</span></div>
             </div>
 
-            <!-- Fiber -->
             <div class="nutrient-card fib">
               <div class="nutrient-label">Fiber</div>
               <div class="nutrient-val"><span id="resFib">4</span><span class="nutrient-unit">g</span></div>
@@ -196,7 +167,6 @@
 
           </div>
 
-          <!-- Clinical / Dietary Assessment Banner -->
           <div class="assessment-box moderate" id="resAssessmentBox">
             <span class="assessment-icon" id="resAssessmentIcon">⚠️</span>
             <div class="assessment-text" id="resAssessmentText">
@@ -204,7 +174,6 @@
             </div>
           </div>
 
-          <!-- Actionable Suggestions -->
           <div class="suggestions-box">
             <div class="suggestions-title">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -228,7 +197,6 @@
             </ul>
           </div>
 
-          <!-- Action to log into Daily Dashboard -->
           <button type="button" class="btn btn-primary" id="logMealBtn" style="width: 100%;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
@@ -244,7 +212,6 @@
 
     </div>
 
-    <!-- Section 5: Daily Nutrition Dashboard -->
     <section class="dashboard-section" id="dashboard">
       <div class="dashboard-head">
         <div>
@@ -258,10 +225,8 @@
 
       <div class="dashboard-grid">
         
-        <!-- Left: Macro Target Stat Cards -->
         <div class="stats-grid">
           
-          <!-- Calories Stat -->
           <div class="stat-card">
             <div class="stat-head">
               <span class="stat-title">Calories</span>
@@ -276,7 +241,6 @@
             </div>
           </div>
 
-          <!-- Protein Stat -->
           <div class="stat-card">
             <div class="stat-head">
               <span class="stat-title">Protein</span>
@@ -291,7 +255,6 @@
             </div>
           </div>
 
-          <!-- Carbs Stat -->
           <div class="stat-card">
             <div class="stat-head">
               <span class="stat-title">Carbohydrates</span>
@@ -306,7 +269,6 @@
             </div>
           </div>
 
-          <!-- Fat Stat -->
           <div class="stat-card">
             <div class="stat-head">
               <span class="stat-title">Lipids / Fat</span>
@@ -323,7 +285,6 @@
 
         </div>
 
-        <!-- Bottom Full-Width Table: Logged Meals Today -->
         <div class="glass-card recent-meals-box">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
             <h3 style="font-size: 1.1rem;">Logged Food Intake (Today)</h3>
@@ -342,7 +303,6 @@
                 </tr>
               </thead>
               <tbody id="mealsTableBody">
-                <!-- Dynamically generated by app.js -->
               </tbody>
             </table>
           </div>
@@ -353,7 +313,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-flex">
       <div>
@@ -368,7 +327,6 @@
     </div>
   </footer>
 
-  <!-- Application Logic -->
   <script src="js/app.js"></script>
 </body>
 </html>

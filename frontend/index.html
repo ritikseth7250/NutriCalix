@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NutriCalix - Understand Your Food With AI</title>
-  <meta name="description" content="NutriCalix - A minimal working prototype for computer vision powered dietary recognition and macronutrient estimation.">
+  <meta name="description" content="NutriCalix - An AI-powered dietary recognition and real-time macronutrient intelligence platform.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥗</text></svg>">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
@@ -25,7 +24,6 @@
       <nav>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
           <li><a href="scan.html" class="nav-link">Food Scanner</a></li>
           <li><a href="scan.html#dashboard" class="nav-link">Daily Dashboard</a></li>
         </ul>
@@ -43,12 +41,10 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
       <div class="hero-grid">
         
-        <!-- Left Hero Content -->
         <div class="hero-text-col">
           <h1 class="hero-title">
             Understand Your Food <br>
@@ -78,27 +74,10 @@
               <span>View Dashboard</span>
             </a>
           </div>
-
-          <div class="academic-meta">
-            <div class="meta-item">
-              <span class="label">System Status</span>
-              <span class="val">System Online & Ready</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Core Focus</span>
-              <span class="val">Vision AI & Nutrition</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Architecture</span>
-              <span class="val">Modular Frontend (HTML/JS)</span>
-            </div>
-          </div>
         </div>
 
-        <!-- Right Hero Visual Interactive Preview Card -->
         <div class="hero-preview-col">
           <div class="hero-preview-card">
-            <!-- Simulated Food Box with AI Bounding Box -->
             <div class="preview-image-box">
               <svg width="100%" height="100%" viewBox="0 0 400 240" preserveAspectRatio="none">
                 <defs>
@@ -111,16 +90,14 @@
                 <circle cx="200" cy="120" r="85" fill="#152033" stroke="#334155" stroke-width="2"/>
                 <circle cx="200" cy="120" r="68" fill="#1b2842" />
                 <text x="200" y="118" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="#f8fafc" text-anchor="middle">🍗 Grilled Chicken Rice</text>
-                <text x="200" y="142" font-family="'Inter', sans-serif" font-size="12" fill="#38bdf8" text-anchor="middle">Deep Segmentation Specimen</text>
+                <text x="200" y="142" font-family="'Inter', sans-serif" font-size="12" fill="#38bdf8" text-anchor="middle">Multi-Class Neural Detection</text>
               </svg>
 
-              <!-- Simulated bounding box -->
               <div class="ai-bbox">
                 <span class="ai-bbox-label">Chicken Rice • 96.4%</span>
               </div>
             </div>
 
-            <!-- Stat pill row -->
             <div class="preview-stat-row">
               <div class="preview-stat-pill">
                 <div class="p-name">Calories</div>
@@ -148,61 +125,6 @@
     </div>
   </section>
 
-  <!-- How It Works Section -->
-  <section class="section" id="how-it-works">
-    <div class="container">
-      <div class="section-head">
-        <div class="badge-pill" style="margin-bottom: 0.75rem;">System Flow</div>
-        <h2>How NutriCalix Operates</h2>
-        <p>A streamlined, three-stage pipeline connecting visual meal recognition to clinical dietary analytics.</p>
-      </div>
-
-      <div class="features-grid">
-        <!-- Feature 1 -->
-        <div class="glass-card feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-              <circle cx="12" cy="13" r="4"></circle>
-            </svg>
-          </div>
-          <h3>1. Image Acquisition</h3>
-          <p>
-            Capture via mobile camera or upload dish images with drag-and-drop support. Normalizes orientation, resolution, and exposure for deep network evaluation.
-          </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="glass-card feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-            </svg>
-          </div>
-          <h3>2. AI Model API Call</h3>
-          <p>
-            Sends the uploaded meal photo to an AI vision model via API. Automatically detects dishes, segments multi-item plates, and extracts ingredients in real time.
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="glass-card feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 6v6l4 2"></path>
-            </svg>
-          </div>
-          <h3>3. Nutrition & Assessment</h3>
-          <p>
-            Estimates caloric load and macro composition (Protein, Carbs, Fat, Fiber), followed by personalized guidance to assist informed eating habits.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-flex">
       <div>

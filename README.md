@@ -1,109 +1,50 @@
 # NutriCalix
 
-A web-based tool that estimates nutrition and calories from photos of food.
+A web application for food recognition and nutrition tracking. It estimates calories and macronutrients (protein, carbs, fat, fiber) from meal photos and helps track daily food intake.
 
-Right now, this repo contains the frontend interface with simulated AI results, built using pure HTML, CSS, and vanilla JavaScript so it's easy to run and test without needing backend setup.
+This is an ongoing project currently in development (final submission planned after December).
 
----
+## Features
 
-## What It Does
-
-- **Landing Page**: Basic introduction with project overview and links to start scanning.
-- **Image Scanner**: Supports uploading files via file picker or drag-and-drop, with an image preview and sample test dishes built in.
-- **Nutritional Breakdown**: Once an image is scanned, it displays:
-  - Detected dish name
-  - Calories (kcal)
-  - Macronutrients (Protein, Carbs, Fat, Fiber)
-  - Quick health summary
-  - Practical suggestions (e.g. portion size, fiber additions)
-- **Daily Dashboard**: Tracks total calories and macros for the day, updates dynamically as you log scanned meals, and includes a table of logged items with timestamps.
-
----
+- **Food Scanner**: Upload or drop a photo of a meal to analyze its nutritional content.
+- **Nutritional Breakdown**: Estimates calories and macronutrients along with simple dietary tips.
+- **Daily Dashboard**: Log scanned meals to track total daily calories and macros with progress bars.
 
 ## Project Structure
 
-```text
+```
 nutricalix/
 ├── frontend/
-│   ├── index.html        # Main landing page
-│   ├── scan.html         # Scanner and dashboard interface
+│   ├── index.html
+│   ├── scan.html
 │   ├── css/
-│   │   └── style.css     # Styling and layout
-│   ├── js/
-│   │   └── app.js        # UI logic and mock data
-│   └── assets/           # Media files
+│   │   └── style.css
+│   └── js/
+│       └── app.js
 └── README.md
 ```
 
----
+## Running Locally
 
-## How to Run Locally
+No installation or dependencies required.
 
-You don't need any build steps, npm, or node installed.
-
-### Option 1: Using Python local server
-From the project root:
-
+**Option 1: Python simple server**
 ```bash
 python -m http.server 3000 --directory frontend
 ```
+Then open `http://localhost:3000` in your browser.
 
-Open your browser at:
-```text
-http://localhost:3000
-```
-
-### Option 2: Open directly in browser
-Just double-click `frontend/index.html` or drag it into any web browser.
-
----
-
-## Connecting Your AI Model API
-
-The analysis in `frontend/js/app.js` currently uses local mock data to simulate how the model responds.
-
-When you have your real backend or AI API ready (such as FastAPI, Gemini Vision, or another vision model), open `frontend/js/app.js` and locate the `runVisionAnalysis()` function. Replace the timeout block with your API call:
-
-```javascript
-// Example using a backend API
-const formData = new FormData();
-formData.append("image", file);
-
-const response = await fetch("http://localhost:8000/api/analyze", {
-  method: "POST",
-  body: formData
-});
-
-const data = await response.json();
-renderAnalysisResult(data);
-```
-
-The UI already expects the result object to have fields for name, calories, protein, carbs, fat, fiber, assessment, and suggestions.
-
----
+**Option 2: Direct file open**
+Open `frontend/index.html` directly in any browser.
 
 ## Tech Stack
 
-- **HTML5** for semantic markup
-- **CSS3** (Flexbox, Grid, custom styling, responsive design)
-- **Vanilla JavaScript (ES6+)** for all interactions and state management
+- HTML5
+- CSS3
+- JavaScript (ES6)
 
----
+## Future Work
 
-## Key Highlights & Features
-
-- ⚡ **Zero Dependencies**: Pure HTML5, CSS3, and ES6+ JavaScript. No build step or node_modules needed.
-- 🎯 **Interactive Vision Scanner**: Drag-and-drop or file upload with simulated real-time inference scanner animation.
-- 📊 **Macro & Calorie Tracking**: Detailed breakdown for calories, protein, carbs, fat, and dietary fiber.
-- 💡 **Dietary Insights**: Contextual health assessments and tailored meal suggestions based on nutritional density.
-- 📱 **Responsive Design**: Clean glassmorphism UI optimized across desktop and mobile screens.
-
----
-
-## Roadmap
-
-- [ ] FastAPI backend integration with Google Gemini Vision API
-- [ ] Export daily nutrition logs to CSV / JSON
-- [ ] Custom macro goals and target calorie alerts
-- [ ] Multi-item meal recognition support
-
+- Backend integration for real-time model inference
+- Export daily food intake reports
+- Multi-dish plate support

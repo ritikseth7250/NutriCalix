@@ -1,8 +1,3 @@
-/* ===================================================================
-   NutriCalix - Core Stylesheet
-   Modern AI Health-Tech Aesthetics (Responsive, Clean, Glassmorphic)
-   =================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
 
 :root {
@@ -42,7 +37,6 @@
   --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Base Reset & Setup */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -67,7 +61,6 @@ body {
   background-attachment: fixed;
 }
 
-/* Typography Helpers */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -84,7 +77,6 @@ a {
   text-decoration: none;
 }
 
-/* Layout Containers */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -94,7 +86,6 @@ a {
   padding-right: 1.5rem;
 }
 
-/* Navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -174,7 +165,6 @@ a {
   color: var(--emerald-light);
 }
 
-/* Common Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -224,7 +214,6 @@ a {
   font-size: 0.85rem;
 }
 
-/* Pill Badges */
 .badge-pill {
   display: inline-flex;
   align-items: center;
@@ -254,7 +243,6 @@ a {
   100% { transform: scale(0.9); opacity: 0.8; }
 }
 
-/* Glass Cards */
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
@@ -270,9 +258,6 @@ a {
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* ===================================================================
-   Landing Page (index.html)
-   =================================================================== */
 .hero-section {
   padding: 5rem 0 4rem;
   position: relative;
@@ -339,7 +324,6 @@ a {
   font-weight: 600;
 }
 
-/* Hero Visual Demo Card */
 .hero-preview-card {
   position: relative;
   background: var(--bg-card);
@@ -372,7 +356,6 @@ a {
   display: block;
 }
 
-/* AI Detection Overlay Simulation */
 .ai-bbox {
   position: absolute;
   top: 15%;
@@ -431,7 +414,6 @@ a {
   color: var(--emerald-light);
 }
 
-/* Features / How it Works */
 .section {
   padding: 5rem 0;
 }
@@ -486,7 +468,6 @@ a {
   color: var(--text-muted);
 }
 
-/* Architecture Roadmap Note */
 .pipeline-banner {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.08));
   border: 1px solid rgba(16, 185, 129, 0.2);
@@ -528,9 +509,6 @@ a {
   font-weight: bold;
 }
 
-/* ===================================================================
-   Scanner & Results Page (scan.html)
-   =================================================================== */
 .workspace-header {
   padding: 2rem 0 1rem;
   display: flex;
@@ -593,7 +571,6 @@ a {
   color: var(--emerald-light);
 }
 
-/* Main Scanner Layout */
 .scanner-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -602,7 +579,6 @@ a {
   align-items: start;
 }
 
-/* Dropzone & Preview */
 .dropzone-container {
   display: flex;
   flex-direction: column;
@@ -654,7 +630,6 @@ a {
   color: var(--text-subtle);
 }
 
-/* Image Preview Container */
 .preview-wrapper {
   position: relative;
   width: 100%;
@@ -663,7 +638,7 @@ a {
   overflow: hidden;
   background: #0b0f19;
   border: 1px solid var(--bg-card-border);
-  display: none; /* toggled via JS */
+  display: none; 
 }
 
 .preview-wrapper.visible {
@@ -677,7 +652,6 @@ a {
   display: block;
 }
 
-/* Scanning Laser Animation */
 .scanner-laser {
   position: absolute;
   top: 0;
@@ -721,7 +695,6 @@ a {
   gap: 1rem;
 }
 
-/* AI Status Indicator */
 .ai-status-box {
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
@@ -752,7 +725,6 @@ a {
   to { transform: rotate(360deg); }
 }
 
-/* Results Section / Right Column */
 .results-container {
   display: flex;
   flex-direction: column;
@@ -780,7 +752,7 @@ a {
 }
 
 .result-card {
-  display: none; /* toggled after analysis */
+  display: none; 
   animation: fadeIn 0.4s ease forwards;
 }
 
@@ -820,7 +792,6 @@ a {
   color: var(--emerald-light);
 }
 
-/* Nutrition Metric Cards */
 .nutrition-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -883,7 +854,6 @@ a {
   margin-left: 2px;
 }
 
-/* Assessment Banner */
 .assessment-box {
   padding: 1.1rem 1.25rem;
   border-radius: var(--radius-md);
@@ -917,7 +887,6 @@ a {
   font-weight: 500;
 }
 
-/* Suggestions List */
 .suggestions-box {
   margin-bottom: 1.5rem;
 }
@@ -958,9 +927,6 @@ a {
   font-weight: bold;
 }
 
-/* ===================================================================
-   Daily Nutrition Dashboard Section
-   =================================================================== */
 .dashboard-section {
   padding: 2rem 0 5rem;
 }
@@ -1050,7 +1016,6 @@ a {
 .fill-carb { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 .fill-fat { background: linear-gradient(90deg, #f43f5e, #fb7185); }
 
-/* Chart Card */
 .chart-card {
   display: flex;
   flex-direction: column;
@@ -1077,7 +1042,6 @@ a {
   justify-content: center;
 }
 
-/* Recent Logs Table */
 .recent-meals-box {
   margin-top: 2rem;
   grid-column: 1 / -1;
@@ -1111,7 +1075,6 @@ a {
   color: var(--text-main);
 }
 
-/* Footer */
 .footer {
   border-top: 1px solid var(--bg-card-border);
   padding: 2.5rem 0;
@@ -1129,7 +1092,6 @@ a {
   gap: 1.5rem;
 }
 
-/* Notification Toast */
 .toast {
   position: fixed;
   bottom: 2rem;
@@ -1155,7 +1117,6 @@ a {
   opacity: 1;
 }
 
-/* Responsive Rules */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
